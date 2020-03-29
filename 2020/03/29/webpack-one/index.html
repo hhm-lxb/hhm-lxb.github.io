@@ -20,13 +20,15 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="记录自己平时的所思所想">
-<meta property="og:type" content="website">
-<meta property="og:title" content="lxb">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="webpack是什么？简而言之就一个资源的打包工具（包括script脚本资源、图片字体资源、css代码等），对所有的资源进行整合处理。以下是webpack中几个重要的概念。  以下内容根据此目录进行操作，大家可根据自己的实际情况进行设置更改:  root webpack.config.js dist &#x2F;&#x2F; 构建后输出的目录 src index index.html index.js index.c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack学习笔记(一)">
+<meta property="og:url" content="http://yoursite.com/2020/03/29/webpack-one/index.html">
 <meta property="og:site_name" content="lxb">
-<meta property="og:description" content="记录自己平时的所思所想">
+<meta property="og:description" content="webpack是什么？简而言之就一个资源的打包工具（包括script脚本资源、图片字体资源、css代码等），对所有的资源进行整合处理。以下是webpack中几个重要的概念。  以下内容根据此目录进行操作，大家可根据自己的实际情况进行设置更改:  root webpack.config.js dist &#x2F;&#x2F; 构建后输出的目录 src index index.html index.js index.c">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-03-29T13:58:58.000Z">
+<meta property="article:modified_time" content="2020-03-29T15:57:59.436Z">
 <meta property="article:author" content="lxb">
 <meta property="article:tag" content="js">
 <meta property="article:tag" content=" css">
@@ -37,19 +39,19 @@
 <meta property="article:tag" content=" vue">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/">
+<link rel="canonical" href="http://yoursite.com/2020/03/29/webpack-one/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false
+    isHome : false,
+    isPost : true
   };
 </script>
 
-  <title>lxb</title>
+  <title>webpack学习笔记(一) | lxb</title>
   
 
 
@@ -153,10 +155,10 @@
             
 
   <div class="posts-expand">
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/29/webpack-one/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -170,8 +172,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/29/webpack-one/" class="post-title-link" itemprop="url">webpack学习笔记(一)</a>
+          webpack学习笔记(一)
         </h1>
 
         <div class="post-meta">
@@ -196,7 +197,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="webpack是什么？"><a href="#webpack是什么？" class="headerlink" title="webpack是什么？"></a>webpack是什么？</h2><p>简而言之就一个资源的打包工具（包括script脚本资源、图片字体资源、css代码等），对所有的资源进行整合处理。以下是webpack中几个重要的概念。</p>
+        <h2 id="webpack是什么？"><a href="#webpack是什么？" class="headerlink" title="webpack是什么？"></a>webpack是什么？</h2><p>简而言之就一个资源的打包工具（包括script脚本资源、图片字体资源、css代码等），对所有的资源进行整合处理。以下是webpack中几个重要的概念。</p>
 <hr>
 <p>以下内容根据此目录进行操作，大家可根据自己的实际情况进行设置更改:</p>
 <ul>
@@ -231,88 +232,33 @@
 <h3 id="entry-output"><a href="#entry-output" class="headerlink" title="entry/output"></a>entry/output</h3><h4 id="entry-打包的入口-output-打包后的出口"><a href="#entry-打包的入口-output-打包后的出口" class="headerlink" title="entry: 打包的入口  output: 打包后的出口"></a>entry: 打包的入口  output: 打包后的出口</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack.config.js</span></span><br><span class="line"><span class="comment">// 引入index目录 单入口</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: <span class="string">'./src/index.js'</span>,</span><br><span class="line">    output: &#123;</span><br><span class="line">        filename: index.js,</span><br><span class="line">        path: path.resolve(__dirname, <span class="string">'dist'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 多入口引入,引入index目录和search目录</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: &#123;</span><br><span class="line">        index: <span class="string">'./src/index.js'</span>,</span><br><span class="line">        search: <span class="string">'./src/search.js'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    output: &#123;</span><br><span class="line">        filename: [name].js, <span class="comment">// 这里的name是占位符，表示entry对象中的key值</span></span><br><span class="line">        path: path.resolve(__dirname, <span class="string">'dist'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
         
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/15/hello-world/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/lxb.png">
-      <meta itemprop="name" content="lxb">
-      <meta itemprop="description" content="记录自己平时的所思所想">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="lxb">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/15/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-03-15 16:20:24" itemprop="dateCreated datePublished" datetime="2020-03-15T16:20:24+08:00">2020-03-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-29 23:33:06" itemprop="dateModified" datetime="2020-03-29T23:33:06+08:00">2020-03-29</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/15/hello-world/" rel="prev" title="Hello World">
+      <i class="fa fa-chevron-left"></i> Hello World
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
   
 
   </div>
-
-  
-
 
 
           </div>
@@ -363,6 +309,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack是什么？"><span class="nav-number">1.</span> <span class="nav-text">webpack是什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#entry-output"><span class="nav-number">1.1.</span> <span class="nav-text">entry&#x2F;output</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#entry-打包的入口-output-打包后的出口"><span class="nav-number">1.1.1.</span> <span class="nav-text">entry: 打包的入口  output: 打包后的出口</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
